@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchedulerApp.TripDetailView">
+    <StackLayout Padding="20" BackgroundColor="Gray">
+        <ListView x:Name="ListViewTripDetail" SeparatorColor="Black" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Abfahrtszeit:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding Path=DepartureTime}" FontSize="Small"/>
+                            <Label Text="Zielort:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding Destination}" FontSize="Small"/>
+                            <Label Text="Fahrer:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding DriverName}" FontSize="Small"/>
+                            <Label Text="Geschätze Ankunft:" FontAttributes="Bold" FontSize="Small" TextColor="Black"/>
+                            <Label Text="{Binding Path=ExpectedArrival}" FontSize="Small"/>
+                            <Label Text="Abfahrtsort:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding DeparturePlace}" FontSize="Small"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

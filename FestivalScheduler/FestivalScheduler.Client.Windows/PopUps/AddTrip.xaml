@@ -1,0 +1,96 @@
+﻿<Window x:Class="FestivalScheduler.Client.Windows.AddTrip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FestivalScheduler.Client.Windows"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:dataClasses="clr-namespace:FestivalScheduler.Data;assembly=FestivalScheduler.Data"
+        mc:Ignorable="d"
+        Title="Fahrt" Height="350" Width="650">
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}"
+                            x:Key="ExampleEnumValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="dataClasses:VehicleType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="ColumnChoirTrip" Width="0"/>
+            <ColumnDefinition x:Name="ColumnTrip" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--ChoirTrip-->
+
+        <TextBlock Text="Chor:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,20,0,0"  Grid.Column="0" Grid.Row="0"/>
+        <ComboBox x:Name="ComboBoxChoir" DisplayMemberPath="Name" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Width="150"  Grid.Column="0" Grid.Row="0" TabIndex="0"/>
+        
+        <TextBlock Text="Von:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,20,0,0" Grid.Column="0" Grid.Row="0"/>
+        <TextBox x:Name="TextBoxStartPointChoir" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,40,0,0" Width="150"  Grid.Column="0" Grid.Row="0"  TabIndex="1"/>
+
+        <TextBlock Text="Nach:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,20,0,0" Grid.Column="0" Grid.Row="0"/>
+        <TextBox x:Name="TextBoxDestinationChoir" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,40,0,0" Width="150"  Grid.Column="0" Grid.Row="0"  TabIndex="2"/>
+
+        <TextBlock Text="Datum:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,20,0,0" Grid.Column="0" Grid.Row="1"/>
+        <DatePicker x:Name="DatePickerChoir" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Width="150"  Grid.Column="0" Grid.Row="1"  TabIndex="3"/>
+        
+        <TextBlock Text="Abfahrt:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,20,0,0" Grid.Column="0" Grid.Row="1"/>
+        <TextBox x:Name="TextBoxStartTimeChoir" Text="00:00" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,40,0,0" Width="150"  Grid.Column="0" Grid.Row="1"  TabIndex="4"/>
+
+        <TextBlock Text="Ankunft:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,20,0,0" Grid.Column="0" Grid.Row="1"/>
+        <TextBox x:Name="TextBoxArrivalTimeChoir" Text="00:00" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,40,0,0" Width="150"  Grid.Column="0" Grid.Row="1"  TabIndex="5"/>
+
+        <TextBlock Text="Fahrer:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,20,0,0" Grid.Column="0" Grid.Row="2"/>
+        <ComboBox x:Name="ComboBoxDriverChoir" DisplayMemberPath="ShortCut" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Width="150"  Grid.Column="0" Grid.Row="2"  TabIndex="6"/>
+        
+        <TextBlock Text="Fahrzeug:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,20,0,0" Grid.Column="0" Grid.Row="2"/>
+        <ComboBox x:Name="ComboBoxVehicleChoir" ItemsSource="{Binding Source={StaticResource ExampleEnumValues}}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,40,0,0" Width="150"  Grid.Column="0" Grid.Row="2"  TabIndex="7"/>
+        
+        <TextBlock Text="Bemerkung:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,20,0,0" Grid.Column="0" Grid.Row="2"/>
+        <TextBox x:Name="TextBoxExtraChoir" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,40,0,0" Width="150"  Grid.Column="0" Grid.Row="2"  TabIndex="8"/>
+
+        <Button x:Name="ButtonSaveC"     Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="240,20" Content="Speichern" TabIndex="9" Click="ButtonSave_OnClick"/>
+        <Button x:Name="ButtonSaveExitC" Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="100,20" Content="Speichern und Beenden" TabIndex="10" Click="ButtonSaveExit_OnClick"/>
+        <Button x:Name="ButtonExitC"     Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="40,20" Content="Beenden" TabIndex="11" Click="ButtonExit_OnClick"/>
+
+        <!--Trip-->
+        <TextBlock Text="Transport von:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,20,0,0"  Grid.Column="1" Grid.Row="0"/>
+        <TextBox x:Name="TextBoxPassenger" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Width="150"  Grid.Column="1" Grid.Row="0" TabIndex="12"/>
+
+        <TextBlock Text="Von:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,20,0,0" Grid.Column="1" Grid.Row="0"/>
+        <TextBox x:Name="TextBoxStartPoint" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,40,0,0" Width="150"  Grid.Column="1" Grid.Row="0"  TabIndex="13"/>
+
+        <TextBlock Text="Nach:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,20,0,0" Grid.Column="1" Grid.Row="0"/>
+        <TextBox x:Name="TextBoxDestination" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,40,0,0" Width="150"  Grid.Column="1" Grid.Row="0"  TabIndex="14"/>
+
+        <TextBlock Text="Datum:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,20,0,0" Grid.Column="1" Grid.Row="1"/>
+        <DatePicker x:Name="DatePicker" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Width="150"  Grid.Column="1" Grid.Row="1"  TabIndex="15"/>
+
+        <TextBlock Text="Abfahrt:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,20,0,0" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="TextBoxStartTime" Text="00:00" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,40,0,0" Width="150"  Grid.Column="1" Grid.Row="1"  TabIndex="16"/>
+
+        <TextBlock Text="Ankunft:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,20,0,0" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="TextBoxArrivalTime" Text="00:00" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,40,0,0" Width="150"  Grid.Column="1" Grid.Row="1"  TabIndex="17"/>
+
+        <TextBlock Text="Fahrer:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,20,0,0" Grid.Column="1" Grid.Row="2"/>
+        <ComboBox x:Name="ComboBoxDriver" DisplayMemberPath="ShortCut" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Width="150"  Grid.Column="1" Grid.Row="2"  TabIndex="18"/>
+
+        <TextBlock Text="Fahrzeug:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,20,0,0" Grid.Column="1" Grid.Row="2"/>
+        <ComboBox x:Name="ComboBoxVehicle" ItemsSource="{Binding Source={StaticResource ExampleEnumValues}}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="250,40,0,0" Width="150"  Grid.Column="1" Grid.Row="2"  TabIndex="19"/>
+
+        <TextBlock Text="Bemerkung:" TextDecorations="Underline" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,20,0,0" Grid.Column="1" Grid.Row="2"/>
+        <TextBox x:Name="TextBoxExtra" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,40,0,0" Width="150"  Grid.Column="1" Grid.Row="2"  TabIndex="20"/>
+
+        <Button x:Name="ButtonSaveT"     Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="240,20" Content="Speichern" TabIndex="21" Click="ButtonSave_OnClick"/>
+        <Button x:Name="ButtonSaveExitT" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="100,20" Content="Speichern und Beenden" TabIndex="22" Click="ButtonSaveExit_OnClick"/>
+        <Button x:Name="ButtonExitT"     Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="40,20" Content="Beenden" TabIndex="23" Click="ButtonExit_OnClick"/>
+    </Grid>
+</Window>

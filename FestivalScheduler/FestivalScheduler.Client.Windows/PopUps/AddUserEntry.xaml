@@ -1,0 +1,53 @@
+﻿<Window x:Class="FestivalScheduler.Client.Windows.AddUserEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FestivalScheduler.Client.Windows"
+        xmlns:dataClasses="clr-namespace:FestivalScheduler.Data;assembly=FestivalScheduler.Data"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Benutzer" Height="350" Width="475">
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}"
+                            x:Key="PermissionValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="dataClasses:PermissionGroups" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}"
+                            x:Key="MembershipValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="dataClasses:DriverMembership" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Grid>
+        <TextBlock Text="Benutzername:" TextDecorations="Underline" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
+        <TextBox x:Name="TextBoxUserName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,40,0,0" Width="100"/>
+
+        <TextBlock Text="Name:" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Width="100"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0" Width="100"/>
+
+        <TextBlock Text="Passwort:" TextDecorations="Underline" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" Width="100"/>
+        <TextBox x:Name="TextBoxPw" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,20,0" Width="100"/>
+
+        <TextBlock Text="Handy-Nummer:" TextDecorations="Underline" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,75,0,0"/>
+        <TextBox x:Name="TextBoxPhone" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,95,0,0" Width="100"/>
+
+        <TextBlock Text="Berechtigung:" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,75,0,0" Width="100"/>
+        <ComboBox x:Name="ComboBoxPermission" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,95,0,0" Width="100" ItemsSource="{Binding Source={StaticResource PermissionValues}}"/>
+        
+        <CheckBox x:Name="CheckBoxAdvisor" Content="Chorbetreuer:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,150,0,0" Width="100" Checked="CheckBoxAdvisor_OnChecked"/>
+        <ComboBox x:Name="ComboBoxChoir" DisplayMemberPath="Name" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,150,0,0" Width="100"/>
+        
+        <CheckBox x:Name="CheckBoxDriver" Content="Fahrer:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,200,0,0" Width="100" Checked="CheckBoxDriver_OnChecked"/>
+        <ComboBox x:Name="ComboBoxDriver" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,200,0,0" Width="100" ItemsSource="{Binding Source={StaticResource MembershipValues}}"/>
+        
+        <Button x:Name="ButtonClose" Content="Beenden" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="ButtonClose_OnClick"/>
+        <Button x:Name="ButtonSaveClose" Content="Speichern und Beenden" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,80,20" Click="ButtonSaveClose_OnClick"/>
+         
+    </Grid>
+</Window>

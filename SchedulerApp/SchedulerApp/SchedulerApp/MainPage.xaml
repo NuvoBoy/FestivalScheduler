@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SchedulerApp"
+             x:Class="SchedulerApp.MainPage"
+             BackgroundColor="Gray">
+
+    <StackLayout BackgroundColor="Gray" Padding="20,0,20,0" HorizontalOptions="Center" VerticalOptions="Fill">
+
+        <!--<Image Source="logo.png" Scale="0.5"/>-->
+        <Label Text="Willkommen bei Fahrdienst" TextColor="White"/>
+
+        <Label Text="Benutzername:" FontSize="10" FontAttributes="Bold" TextColor="Black"></Label>
+        <Entry x:Name="UserName" FontSize="10" HorizontalTextAlignment="Center"></Entry>
+
+        <Label Text="Passwort:" FontSize="10" FontAttributes="Bold" TextColor="Black"></Label>
+        <Entry x:Name="UserPw" FontSize="10" HorizontalTextAlignment="Center"></Entry>
+
+        <Button x:Name="ButtonOpenSchedul" Text="Login" FontSize="10" TextColor="Black" BackgroundColor="LightCyan" Clicked="ButtonOpenSchedul_OnClicked"/>
+
+          
+        
+    </StackLayout>
+
+</ContentPage>

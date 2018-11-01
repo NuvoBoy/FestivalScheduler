@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchedulerApp.SchedulerView"
+             BackgroundColor="Gray" 
+             Title="Fahrplan">
+    <StackLayout Padding="20" BackgroundColor="Gray">
+        <ListView x:Name="ListViewTrips" SeparatorColor="Black" 
+                  ItemSelected="ListViewTrips_OnItemSelected" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="{Binding Path=StartTime, StringFormat='{0:HH:mm}'}" FontSize="Small"/>
+                            <Label Text="{Binding Passenger}" FontSize="Small"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
+    
+    
+    
+    
